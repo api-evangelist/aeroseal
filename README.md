@@ -42,5 +42,10 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Aeroseal is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/aeroseal_stock/
+Aeroseal is a building-envelope and duct air-sealing technology company headquartered in Miamisburg, Ohio. Its patented aerosol sealing process — developed by Dr. Mark Modera under U.S. Department of Energy research at Lawrence Berkeley National Laboratory beginning in 1993 and commercialized as Aeroseal in 2010 — injects a fog of non-toxic sealant particles into a pressurized duct system or building envelope, where the particles collect at the edges of leaks and seal them from the inside. The company sells computer-controlled sealing equipment and software to a dealer network under the HomeSeal Connect and AeroBarrier Connect product lines.
+
+- https://aeroseal.com/
+
+## API surface
+
+**None published.** As of 2026-08-06 Aeroseal publishes no public API, developer portal, SDK, or machine-readable specification. A live application backend exists at `https://api.aeroseal.com` — it answers the plain-text body `live (2.44)` at the root — but it serves the company's own connected sealing equipment and dealer software and returns HTTP 404 on every documented discovery path. See `x-coverage` in [apis.yml](apis.yml) and the full probe record in [well-known/aeroseal-well-known.yml](well-known/aeroseal-well-known.yml).

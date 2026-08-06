@@ -1,10 +1,25 @@
 aid: aeroseal
 name: Aeroseal
-description: 'Aeroseal is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Aeroseal is a building-envelope and duct air-sealing technology company
+  headquartered in Miamisburg, Ohio. Its patented aerosol sealing process — developed
+  by Dr. Mark Modera under U.S. Department of Energy research at Lawrence Berkeley
+  National Laboratory beginning in 1993 and commercialized as Aeroseal in 2010 — injects
+  a fog of non-toxic sealant particles into a pressurized duct system or building
+  envelope, where the particles collect at the edges of leaks and seal them from the
+  inside. The company sells computer-controlled sealing equipment and software to a
+  dealer network under the HomeSeal Connect and AeroBarrier Connect product lines;
+  the on-machine software measures leakage in real time and issues a certificate of
+  completion showing before-and-after leakage rates. Aeroseal reports operations in
+  27 countries and all 50 U.S. states, and has raised roughly $119M across three
+  rounds, including a $67M Series B in July 2023 backed by Breakthrough Energy
+  Ventures, Climate Investment and OGCI. It is an equipment, materials and
+  contractor-software business rather than a developer platform: it publishes no
+  public API, developer portal, SDK or machine-readable specification.'
+image: https://aeroseal.co.uk/wp-content/uploads/2025/10/Aeroseal-Logo-WhiteText.png
 url: https://raw.githubusercontent.com/api-evangelist/aeroseal/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
+x-harvest-url: https://forgeglobal.com/aeroseal_stock/
 x-tier: stub
 x-tier-reason: harvest
 specificationVersion: '0.20'
@@ -12,6 +27,14 @@ created: '2026-08-06'
 modified: '2026-08-06'
 tags:
 - Company
+- Energy Efficiency
+- Climate Technology
+- HVAC
+- Building Envelope
+- Duct Sealing
+- Indoor Air Quality
+- Building Performance
+- Construction Technology
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +42,52 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/aeroseal-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/aeroseal_stock/
+  url: https://aeroseal.com/
+- type: Blog
+  url: https://aeroseal.com/blog/
+- type: BlogFeeds
+  url: https://aeroseal.com/feed/
+- type: Support
+  url: https://support.aeroseal.com/
+- type: Login
+  url: https://aeroseal.com/dealer-login/
+- type: PrivacyPolicy
+  url: https://aeroseal.com/privacy-policy/
+- type: Contact
+  url: https://aeroseal.com/contact-us/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/aeroseal-llc
+- type: LLMsTxt
+  url: llms/aeroseal-llms.txt
+x-enrichment:
+  date: '2026-08-06'
+  status: minimal
+  artifacts_added: 3
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Aeroseal sells computer-controlled duct/envelope sealing equipment and dealer
+    software, not APIs — its live application backend at api.aeroseal.com answers the
+    plain-text body "live (2.44)" at the root but returns 404 on every discovery path
+    (/openapi.json, /swagger.json, /graphql, /api-docs, /docs, /.well-known/*), no
+    developer/docs/portal subdomain resolves, no package exists on npm or PyPI, and the
+    Aeroseal-LLC GitHub org has zero public repositories.
+  evidence:
+  - url: https://api.aeroseal.com/
+    status: 200
+  - url: https://api.aeroseal.com/openapi.json
+    status: 404
+  - url: https://api.aeroseal.com/graphql
+    status: 404
+  - url: https://aeroseal.com/llms.txt
+    status: 404
+  - url: https://aeroseal.com/.well-known/agent-card.json
+    status: 404
+  - url: https://aeroseal.com/
+    status: 403
+  checked: '2026-08-06'

@@ -1,0 +1,83 @@
+generated: '2026-08-06'
+method: probed
+source: live HTTP probes of every Aeroseal host resolved on 2026-08-06
+notes: >-
+  No /.well-known/ document was found on any Aeroseal host. This file is the record
+  of the probe, not a discovery index — no WellKnown/SecurityTxt pointer is wired in
+  apis.yml because nothing was found to point at. The aeroseal.com marketing site is
+  behind a Cloudflare bot interstitial (403 "Just a moment...") and its robots.txt
+  carries an explicit `Disallow: /` for ClaudeBot, GPTBot, CCBot, Google-Extended,
+  Bytespider, Amazonbot, Applebot-Extended and meta-externalagent; the /.well-known/
+  paths below still resolved to real origin 404s rather than the challenge page.
+hosts:
+- host: https://aeroseal.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /llms.txt, status: 404}
+- host: https://api.aeroseal.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /llms.txt, status: 404}
+- host: https://support.aeroseal.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /llms.txt, status: 404}
+
+# STEP 0b contract discovery — hunt for a machine-readable contract before
+# concluding "no spec". Every probe below was run on 2026-08-06 and missed.
+contract_discovery:
+  hosts_resolved:
+  - {host: aeroseal.com, note: 'WordPress 7.0.2 marketing site; Cloudflare bot challenge (403) on HTML, /feed/ RSS returns 200'}
+  - {host: api.aeroseal.com, note: 'LIVE application backend; GET / returns the plain-text body "live (2.44)"; every documented discovery path returns a bare origin 404. No anonymous contract, no docs, no auth-challenge surface.'}
+  - {host: support.aeroseal.com, note: 'WordPress dealer support/knowledge base; Cloudflare bot challenge on HTML, PDF assets return 200'}
+  hosts_not_resolved: [developer.aeroseal.com, docs.aeroseal.com, portal.aeroseal.com,
+    app.aeroseal.com, connect.aeroseal.com, my.aeroseal.com, dealer.aeroseal.com]
+  rest_openapi:
+    host: https://api.aeroseal.com
+    result: miss
+    paths_404: [/openapi.json, /openapi.yaml, /swagger.json, /swagger/v1/swagger.json,
+      /v1/openapi.json, /api-docs, /docs, /redoc, /swagger, /swagger-ui.html, /api,
+      /api/v1, /api/v1/openapi.json, /api/openapi.json, /api/docs, /api/swagger.json,
+      /v1, /v2, /spec, /schema, /version, /status, /health]
+  graphql:
+    result: miss
+    detail: 'https://api.aeroseal.com/graphql returned 404; no /graphql surface found on any host.'
+  mcp:
+    result: miss
+    detail: 'No hosted MCP server advertised in docs, registries, or on any resolved host.'
+  a2a_agent_card:
+    result: miss
+    detail: '/.well-known/agent-card.json and /.well-known/agent.json returned 404 on
+      aeroseal.com, api.aeroseal.com and support.aeroseal.com. Nothing saved — an agent
+      card is search-only and is never authored on a provider''s behalf.'
+  package_registries:
+    result: miss
+    detail: 'npm search "aeroseal" 0 results; pypi.org/pypi/aeroseal/json 404; GitHub
+      org github.com/Aeroseal-LLC exists (created 2024-01-08) with 0 public repositories
+      and no org metadata, so it is not wired as a GitHubOrganization pointer.'
+related_hosts:
+- host: https://aeroseal.co.uk
+  relationship: separate legal entity
+  detail: >-
+    Aeroseal UK (registered in England no. 15243249) is a distinct company from
+    Aeroseal LLC (Miamisburg, Ohio). Its site publishes a Yoast-SEO-generated
+    /llms.txt (HTTP 200) listing marketing pages only — no API surface. It is
+    recorded here for completeness and deliberately NOT saved as this provider's
+    llms.txt, because it is not published by the company this repo profiles.
+  probe: {url: 'https://aeroseal.co.uk/llms.txt', status: 200, content_type: text/plain}
