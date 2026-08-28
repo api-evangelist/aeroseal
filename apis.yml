@@ -15,6 +15,17 @@ description: 'Aeroseal is a building-envelope and duct air-sealing technology co
   Ventures, Climate Investment and OGCI. It is an equipment, materials and
   contractor-software business rather than a developer platform: it publishes no
   public API, developer portal, SDK or machine-readable specification.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://aeroseal.co.uk/wp-content/uploads/2025/10/Aeroseal-Logo-WhiteText.png
 url: https://raw.githubusercontent.com/api-evangelist/aeroseal/refs/heads/main/apis.yml
 x-type: company
